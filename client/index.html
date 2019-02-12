@@ -1,0 +1,205 @@
+<!Doctype HTML>
+<html>
+
+<head>
+    <title>Resistance</title>
+    <meta charset="UTF-8">
+    <meta name="theme-color" content="#002F35">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Google Fonts, MaterialIcons, MaterializeCSS, MyStyle -->
+    <link href="https://fonts.googleapis.com/css?family=Orbitron|Roboto|Roboto+Mono" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="./css/style.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="./css/style2.css">
+    <!-- Sortable, MyJavascript Bundled -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.6.0/Sortable.js"></script>
+    <script src="./bundle.js"></script>
+</head>
+
+<body>
+    <div id="app-container white">
+
+        <div class="city-img-lg hide-on-lg"></div>
+        <div class="banner landing-banner center-align hide-on-lg">RESISTANCE</div>
+        <div class="texture"></div>
+        <div id="cityFooter" class="city-img-footer hide"></div>
+        <!-- START LANDING PAGE -->
+        <div id="LandingDisplay">
+            <div id="landing">
+                <div class="city-img"></div>
+                <div class="banner landing-banner center-align">RESISTANCE</div>
+                <a class="waves-effect waves-light btn game-btn green accent-2 short-center" id="createBtn">
+                    CREATE GAME
+                </a>
+                <a class="waves-effect waves-light btn game-btn yellow short-center" id="joinBtn">
+                    JOIN GAME
+                </a>
+            </div>
+        </div>
+        <div id="landingModal" class="hide reg-layer panel dark-fade">
+            <!-- <div id="closeModal" class="right"><i class="material-icons large">close</i></div> -->
+            <a id="closeModal" class="btn-floating btn-small waves-effect waves-light red right"><i class="material-icons tiny black-text">close</i></a>
+            <div id="joiningPlayer" class="input-field">
+                <label class="yellow-text" for="gameID">Enter Group Name</label>
+                <input class="yellow-text" type="text" id="gameID" maxlength="7">
+            </div>
+            <div class="input-field">
+                <label class="yellow-text" for="playerTag">Enter Your Name</label>
+                <input class="yellow-text" type="text" id="playerTag" maxlength="10">
+            </div>
+            <a class="waves-effect waves-light btn game-btn long-center yellow" id="sendToLobby">Join The Fight!</a>
+        </div>
+        <!-- END LANDING PAGE -->
+        <!-- START LOBBY PAGE -->
+        <div id="LobbyDisplay" class="hide reg-layer panel dark-fade">
+            <h1 class="center-align green-text text-accent-2">RECRUITS</h1>
+            <!-- Player Lobby Display -->
+            <ul id="defaultLobby" class="collection flow-text lobby-list">
+                <!-- Will Fill Dynamically -->
+            </ul>
+            
+            <div id="creatorDisplay" class="hide">
+                <div class="code left-align grey-text">CODE:<span class="yellow-text right" id="code"></span></div>
+                <!-- Creator Lobby Display -->
+                <ul id="creatorLobby" class="collection flow-text lobby-list">
+                    <!-- Will Fill Dynamically -->
+                </ul>
+                <a id="startGame" class="waves-effect waves-light btn game-btn yellow long-center disabled">
+                        Start Game
+                </a>
+                <h6 id="lobbyInfo" class="red-text center-align"></h6>
+            </div>
+        </div>
+        <!-- END LOBBY PAGE -->
+        <!-- START ROLE REVEAL -->
+        <div id="RoleDisplay" class="hide reg-layer panel dark-fade white-text">
+            <h3 class="center-align">Welcome to the Resistance.</h3>
+            <div id="spyReveal" class="flow-text hide">
+                    <div class="grey-text role-reveal">Your Role: <span class="red-text text-accent-2 right">Secret Spy</span></div>
+                <div class="center-align roboto">Do anything to cause confusion. Lie. Wreak havoc. When missions fail, you succeed - but whatever you do, don't get caught.</div>
+            </div>
+            <div id="defaultReveal" class="flow-text">
+                <div class="grey-text role-reveal">Your Role: <span class="green-text text-accent-2 right">Freedom Fighter</span></div>
+                <div class="center-align roboto">Do everything in your power to expose spies. Surely, they are among us. Successful missions are the key to winning this war.</div>
+            </div>
+            <a id="startRound" class="waves-effect waves-light btn game-btn yellow long-center">
+                I'm Ready!
+            </a>
+        </div>
+        <!-- END ROLE REVEAL -->
+        <!-- START GAME BOARD -->
+        <div id="GameDisplay" class="reg-layer panel dark-fade hide">
+            <div class="game-grid">
+                <h4 id="missionStatus" class="results center-align">Resistance</h4>
+                <div id="card1" class="card">1</div>
+                <div id="card2" class="card">2</div>
+                <div id="card3" class="card">3</div>
+                <div id="card4" class="card">4</div>
+                <div id="card5" class="card">5</div>
+                <h5 id="infoFeed" class="info-feed center-align yellow-text">Other's are still accepting their roles.</h5>
+            </div>
+        <!-- </div> -->
+        <!-- END GAME BOARD -->
+        <!-- BEGIN WAITING -->
+        <div id="WaitDisplay" class="display hide">
+            <h2 id="waitingInfo"></h2>
+            <div class="spinner">
+                <div class="rect1"></div>
+                <div class="rect2"></div>
+                <div class="rect3"></div>
+                <div class="rect4"></div>
+                <div class="rect5"></div>
+            </div>
+            <h5 class="white-text center-align">Awaiting Player(s)</h5>
+        </div>
+        <!-- END WAITING -->
+        <!-- START MISSION LEADER -->
+        <!-- <div id="LeaderDisplay" class="leader-grid hide"> -->
+            <div id="LeaderDisplay" class="display hide">
+                <h3 class="yellow-text center-align">Select A Squad</h3>
+                <div class="list-container list-offset">
+                    <div class="list-title center-align grey-text">CANDIDATES</div>
+                    <ul id="candidatesList" class="collection team-list">
+                        <!-- Will fill dynamically -->
+                    </ul>
+                </div>
+            
+                <div class="list-container">
+                    <div class="list-title center-align green-text text-accent-2"> TEAM
+                        <span id="inTeam" class="right-align red-text">0</span>
+                        <span id="sizeOfTeam" class="right-align"></span>
+                    </div>
+                    <ul id="teamList" class="collection team-list">
+                        <!-- Will fill dynamically -->
+                    </ul>
+                </div>
+                <a id="pickTeamBtn" class="waves-effect waves-light btn game-btn green accent-2 long-center disabled">
+                    PROPOSE TEAM
+                </a>
+            </div>
+        <!-- </div> -->
+        <!-- END MISSION LEADER -->
+        <!-- START VOTING -->
+            <div id="VotingDisplay" class="display hide">
+                <h4 class="white-text center-align">MISSION LEADER: </h4>
+                <h3 id="missionLeaderVote" class="yellow-text center-align"></h3>
+                <h4 class="white-text center-align">PROPOSED MISSION PARTY:</h4>
+                <ul id="pollingList" class="collection">
+                </ul>
+                <div class="row" style="margin-top: 50px;">
+                    <div class="col s6">
+                        <!-- <img src="./images/thumbs_up_icon.png" alt="thumbs_up" id="thumbsUp"> -->
+                        <i id="thumbsUp" class="large green-text text-accent-2 material-icons center-align">thumb_up</i>
+                    </div>
+                    <div class="col s6">
+                        <!-- <img src="./images/thumbs_down_icon.png" alt="thumbs_down" id="thumbsDown"> -->
+                        <i id="thumbsDown" class="large red-text material-icons center-align">thumb_down</i>
+                    </div>
+                </div>
+            </div>
+            <!-- END VOTING -->
+            <!-- START MISSION DEPLOY -->
+            <div id="DeployDisplay" class="display hide">
+                <h3 class="white-text center-align">You've Been Deployed.</h3>
+                <h2 class="green-text text-accent-2 center-align">Succeed</h2> 
+                <h4 class="white-text center-align">OR</h4>
+                <h2 class="red-text center-align">Sabotage</h2>
+                <!-- <button id="succeedBtn">Succeed</button>
+                <button id="sabotageBtn">Sabatoge</button> -->
+                <a id="succeedBtn" class="waves-effect waves-light btn game-btn green accent-2 long-center">
+                    Succeed
+                </a>
+                <a id="sabotageBtn" class="waves-effect waves-light btn game-btn red long-center">
+                    Sabatoge
+                </a>
+            </div>
+            <!-- END MISSION DEPLOY -->
+            <!-- START GAME OVER -->
+            <div id="EndDisplay" class="reg-layer panel dark-fade hide">
+                <h4 id="endMsg" class="center-align"></h4>
+                <h2 id="winnerDisplay"></h2>
+                <a class="waves-effect waves-light btn game-btn green accent-2 short-center" id="reloadGame">
+                    PLAY AGAIN
+                </a>
+            </div>
+        </div>
+        <!-- END GAME OVER -->
+        <!-- BEGIN ERROR -->
+        <div id="ErrorDisplay" class="err-layer panel dark-fade red-text hide">
+            <h4 class="center-align" id="errMsg"></h4>
+            <a class="waves-effect waves-light btn game-btn red short-center" id="resetGame">
+                RESET GAME
+            </a>
+        </div>
+        <!-- END ERROR -->
+        <!-- START SWIPE FOR ROLE AND RULES -->
+        <div id="rules-and-role" class="hide">
+            <img src="./images/info_icon.png" alt="info-icon">
+        </div>
+    </div>
+    <!-- END APP-CONTAINER -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+
+</html>

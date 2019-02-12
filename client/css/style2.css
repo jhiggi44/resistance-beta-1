@@ -1,0 +1,375 @@
+/* font-family: 'Orbitron', sans-serif; */
+:root {
+    --spy-red: #DF311E;
+    --resistance-green: #0DDB97;
+    --neutral-yellow: #E6EC79;
+    --game-green: #002f35;
+    /* --game-green: #0D3134; */
+    --sky-blue: #87CED9;
+}
+/* GENERAL */
+body {
+    margin: 0;
+    font-family: 'Orbitron', sans-serif;
+    background-color: var(--game-green);
+    font-size: 50px;
+    overflow-y: hidden;
+    color: white;
+}
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    margin: 10px 0;
+}
+input {
+    font-family: 'Orbitron', sans-serif; 
+}
+.hide {
+    display: none;
+}
+.hide-on-sm {
+    display: none;
+}
+.hide-on-lg {
+    display: block;
+}
+.texture {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/noise.png");
+    /* background-image: url("https://www.transparenttextures.com/patterns/outlets.png"); */
+}
+.reg-layer {
+    z-index: 2;
+}
+.err-layer {
+    z-index: 4;
+}
+.panel {
+    position: absolute;
+    width: 60%;
+    height: calc(100% - 100px);
+    top: 90px;
+    left: 20%;
+    overflow-y: scroll;
+    background-color: var(--game-green);
+    animation: slide-up-full .7s;
+    padding: 40px 10px 10px 10px;
+}
+.banner {
+    position: absolute;
+    z-index: 3;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100px;
+    font-size: 65px;
+    font-weight: bold;
+    box-shadow: 0px 0px 20px 0px var(--spy-red);
+    border-radius: 3px;
+    padding-top: 8px;
+}
+.game-green {
+    background-color: var(--game-green);
+}
+.game-green-text {
+    color: var(--game-green);
+}
+.roboto {
+    font-family: 'Roboto Mono', sans-serif;
+}
+.dark-fade {
+    background-color: transparent;
+    background-image: linear-gradient(var(--game-green) 30%, transparent);
+}
+/* LANDING */
+.city-img-lg {
+    height: 100vh;
+    width: 100%;
+    background-image: url('../images/city_img.png');
+    background-size: cover;
+    background-position: center bottom;
+}
+.city-img {
+    display: none;
+    height: 45vh;
+    width: 100%;
+    background-image: url('../images/city_img.png');
+    background-size: cover;
+    background-position: center bottom;
+}
+.landing-banner {
+    background-color: var(--spy-red);
+    color: var(--game-green);
+}
+.short-center {
+    margin-left: 33%;
+    width: 33%;
+}
+.long-center {
+    margin-left: 1.5%;
+    width: 97%;
+    color: var(--game-green);
+}
+.game-btn {
+    text-align: center;
+    font-size: 30px;
+    height: 50px;
+    padding-top: 10px;
+}
+#landingModal {
+    padding: 10%;
+}
+#createBtn {
+    color: var(--game-green);
+    position: absolute;
+    z-index: 2;
+    top: 60%;
+}
+#joinBtn {
+    color: var(--game-green);
+    position: absolute;
+    z-index: 2;
+    top: 75%;
+}
+/* LOBBY */
+.in-lobby {
+    /* font-family: 'Roboto Mono', sans-serif; */
+    position: absolute;
+    top: 100px;
+    right: 100px;
+    color: var(--game-green);
+    font-size: 20px;
+}
+.lobby-list {
+    margin-top: 40px;
+}
+.code {
+    margin: 0 0 -20px 0;
+    width: 100%;
+    font-size: 35px;
+}
+.role-reveal {
+    font-size: 20px;
+    width: 60%;
+    margin: 15px 0 15px 20%;
+}
+#startRound {
+    margin-top: 50px;
+}
+/* GAME */
+.game-grid {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 60px 82px 20px;
+    grid-template-areas: 
+    '. results results results .'
+    'card1 card2 card3 card4 card5'
+    'info info info info info'
+}
+.info-feed {
+    grid-area: info;
+    /* font-size: 20px; */
+}
+.results {
+    grid-area: results;
+    font-weight: bolder;
+}
+.card {
+    margin: 10px;
+    padding: auto;
+    /* border: 5px solid black; */
+    color: var(--game-green);
+    background-color: #9e9e9e;
+    /* background-color: white; */
+    border-radius: 3px;
+    text-align: center;
+    font-size: 50px;
+}
+#card1 {
+    grid-area: card1;
+}
+#card2 {
+    grid-area: card2;
+}
+#card3 {
+    grid-area: card3;
+}
+#card4 {
+    grid-area: card4;
+}
+#card5 {
+    grid-area: card5;
+}
+/* LeaderDisplay */
+#LeaderDisplay {
+    width: 100%;
+}
+.list-offset {
+    margin-left: 22px;
+}
+.list-container {
+    margin-top: 15px;
+    display: inline-block;
+    height: 40%;
+    width: calc(50% - 30px);
+}
+.list-title {
+    width: 100%;
+    /* font-size: 5vw; */
+    font-size: 20px;
+    color: white;
+}
+.team-list {
+    width: 100%;
+    height: 40vh;
+}
+.team-list > li {
+    font-size: 15px;
+}
+/* VotingDisplay */
+#pollingList > li {
+    font-size: 20px;
+}
+#thumbsUp, #thumbsDown {
+    width: 100%;
+}
+/* MEDIA QUERIES */
+/* For Medium Screens */
+@media only screen and (max-width: 1400px) {
+    .game-btn {
+        font-size: 20px;
+    }
+    .short-center {
+        margin-left: 17%;
+        width: 66%;
+    }
+    .panel {
+        width: 80%;
+        left: 10%;
+    }
+}
+/* For Small Screens */
+@media only screen and (max-width: 900px) {
+    .banner {
+        height: 65px;
+        font-size: 40px;
+        font-weight: bold;
+    }
+    .dark-fade {
+        background-color: transparent;
+        background-image: linear-gradient(var(--game-green) 75%, transparent);
+    }
+    .hide-on-sm {
+        display: block;
+    }
+    .hide-on-lg {
+        display: none;
+    }
+    .landing-banner {
+        left: 0;
+        top: 45vh;
+    }
+    #createBtn {
+        top: 65%;
+    }
+    #joinBtn {
+        top: 80%;
+    }
+    .panel {
+        width: 100%;
+        height: calc(100% - 1px);
+        top: -7px;
+        left: 0;
+        animation: slide-up-mobile .7s;
+    }
+    .city-img {
+        display: block;
+    }
+    .city-img-footer {
+        position: absolute;
+        z-index: 0;
+        height: 250px;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        background-image: url('../images/city_img.png');
+        background-size: cover;
+        background-position: center bottom;
+        animation: fall-to-bottom .7s;
+    }
+    .role-reveal {
+        font-size: 20px;
+        width: 90%;
+        margin: 15px 0 15px 5%;
+    }
+}
+/* ANIMATION */
+@keyframes slide-up-full {
+    from { top: 100%; }
+    to { top: 90px; }
+}
+@keyframes slide-up-mobile {
+    from { top: 100%; }
+    to { top: -7px; }
+}
+@keyframes fall-to-bottom {
+    from { top: 0%; }
+    to { top: calc(100% - 250px); }
+}
+/* LOADING SPINNER */
+.spinner {
+    margin: 100px auto;
+    width: 50px;
+    height: 40px;
+    text-align: center;
+    font-size: 10px;
+  }
+  
+  .spinner > div {
+    background-color: white;
+    height: 100%;
+    width: 6px;
+    display: inline-block;
+    
+    -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
+    animation: sk-stretchdelay 1.2s infinite ease-in-out;
+  }
+  
+  .spinner .rect2 {
+    -webkit-animation-delay: -1.1s;
+    animation-delay: -1.1s;
+  }
+  
+  .spinner .rect3 {
+    -webkit-animation-delay: -1.0s;
+    animation-delay: -1.0s;
+  }
+  
+  .spinner .rect4 {
+    -webkit-animation-delay: -0.9s;
+    animation-delay: -0.9s;
+  }
+  
+  .spinner .rect5 {
+    -webkit-animation-delay: -0.8s;
+    animation-delay: -0.8s;
+  }
+  
+  @-webkit-keyframes sk-stretchdelay {
+    0%, 40%, 100% { -webkit-transform: scaleY(0.4) }  
+    20% { -webkit-transform: scaleY(1.0) }
+  }
+  
+  @keyframes sk-stretchdelay {
+    0%, 40%, 100% { 
+      transform: scaleY(0.4);
+      -webkit-transform: scaleY(0.4);
+    }  20% { 
+      transform: scaleY(1.0);
+      -webkit-transform: scaleY(1.0);
+    }
+  }

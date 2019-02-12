@@ -1,0 +1,541 @@
+
+/* Fonts */
+/* font-family: 'Roboto', sans-serif;
+font-family: 'Orbitron', sans-serif;
+font-family: 'Roboto Mono', monospace; */
+
+/* GLOBAL STYLING */
+:root {
+    --spy-red: #DF311E;
+    --resistance-green: #0DDB97;
+    --neutral-yellow: #E6EC79;
+    --game-green: #002f35;
+    --sky-blue: #87CED9;
+}
+
+body {
+    background-color: black;
+    color: white;
+    font-family: 'Roboto Mono', sans-serif;
+    margin: 0%;
+}
+
+/* Default to Large Screen Sizes */
+#app-container {
+    position: relative;
+    margin-left: 28%;
+    margin-right: 28%;
+    background-color: var(--game-green);
+    height: 100vh;
+    box-shadow: 0px 0px 15px 5px var(--game-green);
+}
+
+/* GRIDS */
+.landing-grid {
+    display: grid;
+    grid-template-columns: auto 80% auto;
+    grid-template-rows: 40vh 10vh 22.5vh 22.5vh;
+    grid-template-areas: 
+    'cityImage cityImage cityImage'
+    'landingBanner landingBanner landingBanner'
+    '. createBtn .'
+    '. joinBtn .';
+}
+
+.lobby-grid {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 10vh 8vh 52vh 30vh;
+    grid-template-areas:
+    'recruitBanner'
+    'recruitStats'
+    'recruitDisplay'
+    'buttonOrImg';
+}
+
+.game-grid {
+    display: grid;
+    grid-template-columns: 20% 20% 10% 10% 20% 20%;
+    grid-template-rows: 10vh 15vh;
+    grid-template-areas: 
+    'title title title title title title'
+    'card1 card2 card3 card3 card4 card5'
+}
+
+.leader-grid {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 8vh 43vh 9vh;
+    grid-template-areas: 
+    'candidateHead teamHead'
+    'candidates team'
+    'submitTeam submitTeam'
+}
+
+.vote-grid {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 7.5vh 7.5vh 30vh 25vh;
+    grid-template-areas: 
+    'voteLeader voteLeader'
+    'voteInfo voteInfo'
+    'voteList voteList'
+    'thumbsUp thumbsDown'
+}
+
+/* GENERIC STYLING */
+.hide {
+    display: none;
+}
+
+/* LANDING */
+.city-image {
+    grid-area: cityImage;
+    background-image: url('../images/city.png');
+    background-size: cover;
+    background-position: center bottom;
+}
+
+.landing-banner {
+    grid-area: landingBanner;
+    background-color: var(--spy-red);
+    /* background-color: var(--resistance-green); */
+    text-align: center;
+    color: var(--game-green);
+    font-size: 7vh;
+    margin: 0%;
+    padding-bottom: 1vh;
+    font-weight: 900;
+    /* left-shift, drop, blur, spread */
+    box-shadow: 0px 0px 15px 0px var(--spy-red);
+}
+
+.create-btn {
+    grid-area: createBtn;
+    text-decoration: none;
+}
+
+.join-btn {
+    grid-area: joinBtn;
+    text-decoration: none;
+}
+
+#createBtn {
+    color: var(--resistance-green);
+    border-top-style: solid; 
+    border-bottom-style: solid;
+    border-width: 6px;
+    border-color: var(--resistance-green);
+    width: 250px;
+    font-size: 33px;
+    font-style: italic;
+    font-weight: bolder;
+    letter-spacing: 2.5px;
+    margin: 7vh auto 5vh auto;
+}
+
+#joinBtn {
+    color: var(--neutral-yellow);
+    border-top-style: solid; 
+    border-bottom-style: solid;
+    border-width: 6px;
+    border-color: var(--neutral-yellow);
+    width: 205px;
+    font-size: 33px;
+    font-style: italic;
+    font-weight: bolder;
+    letter-spacing: 2.5px;
+    margin: 0% auto;
+}
+
+/* LOBBY */
+.recruit-banner {
+    grid-area: recruitBanner;    
+    text-align: center;
+    color: white;
+    font-size: 8vh;
+    padding-bottom: 1vh;
+    font-weight: 900;
+}
+
+.recruit-display {
+    margin: -1vh 0 0 0;
+    grid-area: recruitDisplay;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    font-size: 4vh;
+    border-top: 6px double var(--neutral-yellow);
+    border-bottom: 6px double var(--neutral-yellow);
+    overflow-y: scroll;
+}
+
+.recruit-display > li {
+    width: 90%;
+    /* height: 20%; */
+    height: 5vh;
+    text-align: center;
+    margin: 5px 0;
+    color: var(--neutral-yellow);
+}
+
+.recruit-display > li > span {
+    color: white;
+}
+
+.creator-list > li {
+    text-align: left;
+    color: white;
+}
+
+.creator-list > li > img {
+    float: right;
+    width: 5vh;
+    transform: rotate(90deg);
+}
+
+.recruit-stats {
+    color: var(--neutral-yellow);
+    font-size: 4.5vh;
+    margin-top: 1vh;
+}
+
+.recruit-stats > div {
+    margin: 0 20px 0 20px;
+}
+
+.recruit-stats > div > span {
+    color: white;
+    float: right;
+}
+
+.recruit-img {
+    grid-area: buttonOrImg;
+    background-image: url('../images/camp.png');
+    background-size: cover;
+    background-position: center top;
+}
+
+.recruit-confirm {
+    grid-area: buttonOrImg;
+    text-align: center;
+} 
+
+.recruit-confirm > button {
+    background-color: var(--resistance-green);
+    color: var(--game-green);
+    border: none;
+    border-radius: 3px;
+    margin: 10px auto 0 auto;
+    height: 10vh;
+    width: 90%;
+    font-size: 8vh;
+    font-style: italic;
+}
+
+.recruit-confirm > p {
+    margin: 15px auto 0 auto;
+    width: 90%;
+    text-align: center;
+}
+
+/* ROLE REVEAL */
+.role-reveal {
+    height: 100%;
+    width: 100%;
+}
+
+/* MISSION LEADER */
+.title-banner {
+    grid-area: title;
+    text-align: center;
+    color: white;
+    font-size: 7vh;
+    padding-bottom: 1vh;
+    font-weight: 900;
+}
+
+.card {
+    margin: 10px;
+    padding: auto;
+    border: 5px solid black;
+    color: white;
+    border-radius: 3px;
+    text-align: center;
+    font-size: 7.5vh;
+}
+
+.red-card {
+    background-color: var(--spy-red);
+    border-color: var(--spy-red);
+    color: var(--game-green);
+}
+
+.green-card {
+    background-color: var(--resistance-green);
+    border-color: var(--resistance-green);
+    color: var(--game-green);
+}
+
+#card1 {
+    grid-area: card1;
+}
+
+#card2 {
+    grid-area: card2;
+}
+
+#card3 {
+    grid-area: card3;
+}
+
+#card4 {
+    grid-area: card4;
+}
+
+#card5 {
+    grid-area: card5;
+}
+
+.candidate-header {
+    grid-area: candidateHead;
+    font-size: 3vh;
+    color: white;
+    text-align: left;
+    margin-right: 10px;
+}
+
+.team-header {
+    grid-area: teamHead;
+    font-size: 3vh;
+    text-align: left;
+    margin-right: 10px;
+}
+
+.team-header > span {
+    float: right;
+}
+
+.candidates-list {
+    grid-area: candidates;
+    color: var(--spy-red);
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    overflow-y: scroll;
+    margin-left: -20px;
+}
+
+.candidates-list > li {
+    height: 3vh;
+    font-size: 2.8vh;
+    width: 90%;
+    border: 3px solid var(--spy-red);
+    border-radius: 3px;
+    text-align: center;
+    margin-top: 10px;
+    padding-bottom: 5px;
+}
+
+.team-list {
+    grid-area: team;
+    color: var(--resistance-green);
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    overflow-y: scroll;
+    margin-right: 10px;
+    margin-left: -20px;
+}
+
+.team-list > li {
+    height: 3vh;
+    font-size: 2.8vh;
+    width: 90%;
+    border: 3px solid var(--resistance-green);
+    border-radius: 3px;
+    text-align: center;
+    margin-top: 10px;
+    padding-bottom: 5px;
+}
+
+.pick-team-btn {
+    grid-area: submitTeam;
+    text-align: center;
+}
+
+.default-btn {
+    width: 90%;
+    height: 10vh;
+    text-align: center;
+    font-size: 5vh;
+    background-color: var(--spy-red);
+    color: var(--game-green);
+    border: none;
+    border-radius: 3px;
+}
+
+.submit-btn {
+    background-color: var(--resistance-green);
+}
+
+/* Voting */
+.leader-info {
+    grid-area: voteLeader;
+    font-size: 3vh;
+    text-align: left;
+    margin-left: 10px;
+}
+
+.leader-info > span {
+    float: right;
+    color: var(--neutral-yellow);
+    margin-right: 10px;
+}
+
+.vote-info {
+    grid-area: voteInfo;
+    font-size: 3vh;
+    text-align: left;
+    margin-left: 10px;
+}
+
+.vote-list {
+    grid-area: voteList;
+    color: var(--neutral-yellow);
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    overflow-y: scroll;
+    margin-top: -20px;
+    margin-left: 0px;
+}
+
+.vote-list > li {
+    height: 4.2vh;
+    width: 88%;
+    text-align: center;
+    font-size: 3.5vh;
+    /* border: 5px solid var(--neutral-yellow); */
+    /* border-radius: 3px; */
+    margin-top: 5px;
+
+}
+
+#thumbsUp {
+    grid-area: thumbsUp;
+    height: 80%;
+    margin: 0 auto;
+}
+
+#thumbsDown {
+    grid-area: thumbsDown;
+    height: 80%;
+    margin: 0 auto;
+}
+
+/* END */
+
+
+/* RULES AND ROLE */
+#rules-and-role {
+    width: 100%;
+    height: 5vh;
+    font-size: 2vh;
+    text-align: right;
+    padding-top: 10px;
+    background-color: var(--game-green);
+    color: var(--resistance-green);
+}
+
+#rules-and-role > img {
+    height: 70%;
+    padding: 0 10px 5px 0;
+}
+
+/* Modal */
+#landingModal {
+    position: absolute;
+    height: 51%;
+    width: 100%;
+    z-index: 1;
+    left: 0;
+    top: 49vh;
+    overflow: auto; 
+    animation-name: drop;
+    animation-duration: 1s;
+    background-color: var(--spy-red);
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+}
+
+#landingModal > div > label {
+    float: left;
+    margin: 5vh 10%;
+}
+
+#landingModal > div > input {
+    width: 80%;
+    background-color: var(--spy-red);
+    border: none;
+    border-bottom: 5px solid white;
+    font-family: inherit;
+    font-size: 5vh;
+    color: var(--neutral-yellow); 
+}
+
+#landingModal > div > input:focus {
+   border: none;
+   border-bottom: 5px solid var(--neutral-yellow);
+   outline: none;
+}
+
+#landingModal > button {
+    margin-top: 5vh;
+    width: 80%;
+    height: 8vh;
+    font-size: 4vh;
+    border: none;
+    border-radius: 3px;
+    padding-top: 1vh; 
+    font-family: inherit; 
+    background-color: var(--neutral-yellow);
+    color: var(--spy-red);
+}
+
+/* MEDIA QUERIES */
+/* For Medium Screens */
+@media only screen and (max-width: 1400px) {
+    #app-container {
+        margin-left: 18%;
+        margin-right: 18%;
+    }
+}
+
+/* For Small Screens */
+@media only screen and (max-width: 900px) {
+    #app-container {
+        margin-left: 0%;
+        margin-right: 0%;
+    }
+}
+
+/* ANIMATIONS */
+.fade {
+    animation-name: fade;
+    animation-duration: 5s;
+}
+
+@keyframes fade {
+    from { opacity: 0; }
+    to { opacity : 1; }
+}
+
+@keyframes drop {
+    from { height: 0% }
+    to { height: 51vh }
+}
