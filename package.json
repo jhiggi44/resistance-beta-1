@@ -1,0 +1,32 @@
+{
+  "engines": {
+    "node": "11.7.0"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "resistance_beta",
+  "version": "11.7.0",
+  "description": "A game, called Resistance, that I've enjoyed playing with my friends made for the web.",
+  "main": "server.js",
+  "dependencies": {
+    "websocket": "^1.0.28",
+    "sortablejs": "^1.7.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jhiggi44/resistance-beta-1.git"
+  },
+  "keywords": [
+    "game",
+    "nodejs",
+    "websocket"
+  ],
+  "author": "Jordan Higgins",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jhiggi44/resistance-beta-1/issues"
+  },
+  "homepage": "https://github.com/jhiggi44/resistance-beta-1#readme"
+}
