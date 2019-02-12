@@ -33,7 +33,11 @@ let HTTP = http.createServer(function(request, response) {
         } else {
             // console.log("writing " + filePath + " to browser.");
             response.writeHead(200, { 'Content-Type': contentType });
-            response.end(content, 'utf-8');
+            if (contentType == 'image/png') {
+                response.end(content, 'utf-8');
+            } else {
+                response.end(content, 'utf-8');
+            }
         }
     });
 });
